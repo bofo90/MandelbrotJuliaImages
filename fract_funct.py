@@ -2,16 +2,17 @@ import numpy as np
 
 import settings
 
+
 class Fractal():
-    
+
     def __init__(self):
-        
+
         self.c = np.zeros((settings.HEIGHT, settings.WIDTH), dtype=complex)
         self.z0 = np.zeros_like(self.c)
-        self.updateC(-2,1,-1,1)
-        
-    def updateC(self,re_st,re_end,im_st,im_end):
-        
+        self.updateC(-2, 1, -1.5, 1.5)
+
+    def updateC(self, re_st, re_end, im_st, im_end):
+
         real_axis = np.linspace(re_st, re_end, num=settings.WIDTH)
         imaginary_axis = np.linspace(im_end, im_st, num=settings.HEIGHT)
         self.c.real, self.c.imag = np.meshgrid(real_axis, imaginary_axis)
@@ -26,16 +27,16 @@ class Fractal():
             mask = np.logical_and((z.real**2 + z.imag**2) > 4, elements_todo)
             pixels[mask] = iteration
             elements_todo = np.logical_and(elements_todo, np.logical_not(mask))
-            
+
         pixels[elements_todo] = settings.MAX_ITER
-            
+
         return pixels
-    
-    def julia(self,shift):
-        
+
+    def julia(self, shift):
+
         self.z0 = self.c
         self.c = np.zeros_like(self.z0) + shift
-        
+
         pixels = self.mandelbrot()
-            
+
         return pixels

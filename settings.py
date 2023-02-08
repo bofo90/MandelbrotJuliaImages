@@ -2,5 +2,5 @@
 MAX_ITER = 100
 
 # Image size (pixels)
-WIDTH = 900
-HEIGHT = 600
+WIDTH = 1080
+HEIGHT = 1080
