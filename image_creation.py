@@ -60,4 +60,3 @@ class ImageCreator():
         im = Image.fromarray(self.im_array, 'HSV')
         im.convert('RGB').save(f'Images/{name}.png', 'PNG')
         im.show()
-

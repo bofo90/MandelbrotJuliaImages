@@ -9,9 +9,14 @@ class Fractal():
 
         self.c = np.zeros((settings.HEIGHT, settings.WIDTH), dtype=complex)
         self.z0 = np.zeros_like(self.c)
-        self.updateC(-2, 1, -1.5, 1.5)
+        self.updateC(-0.5, 0, 1.5)
 
-    def updateC(self, re_st, re_end, im_st, im_end):
+    def updateC(self, c_re, c_im, radius):
+
+        re_st = c_re-radius
+        re_end = c_re+radius
+        im_st = c_im-radius
+        im_end = c_im+radius
 
         real_axis = np.linspace(re_st, re_end, num=settings.WIDTH)
         imaginary_axis = np.linspace(im_end, im_st, num=settings.HEIGHT)
